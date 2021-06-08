@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_06_08_154551) do
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "teams_id"
     t.index ["teams_id"], name: "index_players_on_teams_id"
   end
@@ -33,6 +35,8 @@ ActiveRecord::Schema.define(version: 2021_06_08_154551) do
   create_table "team_competitions", force: :cascade do |t|
     t.bigint "team_id"
     t.bigint "competition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["competition_id"], name: "index_team_competitions_on_competition_id"
     t.index ["team_id"], name: "index_team_competitions_on_team_id"
   end
