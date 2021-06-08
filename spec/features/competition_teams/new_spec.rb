@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'competitions show page', type: :feature do
+RSpec.describe 'competition_teams new page', type: :feature do
   before(:each) do
     @team1 = Team.create(name: 'Flying Tigers', nickname: 'Tiger Puffs', hometown: 'Syndey')
     @team2 = Team.create(name: 'Popping Pandas', nickname: 'Panda Players', hometown: 'Shanghai')
@@ -20,38 +20,23 @@ RSpec.describe 'competitions show page', type: :feature do
     @competition_team4 = CompetitionTeam.create(competition: @competition2, team: @team3)
   end
 
-  describe 'page appearance' do
-    it 'shows the competitions name, location, and sport' do
-      visit "/competitions/#{@competition1.id}"
-
-      expect(page).to have_content(@competition1.name)
-      expect(page).to have_content(@competition1.location)
-      expect(page).to have_content(@competition1.sport)
-    end
-    it 'shows the name and hometowns of each team in the competition' do
-      visit "/competitions/#{@competition1.id}"
-
-      expect(page).to have_content(@team1.name)
-      expect(page).to have_content(@team1.hometown)
-      expect(page).to have_content(@team4.name)
-      expect(page).to have_content(@team4.hometown)
-    end
-    it 'shows the average age of all players in the competition' do
-      visit "/competitions/#{@competition1.id}"
-
-      expect(page).to have_content(32.5)
-    end
-  end
-
   describe 'page functionality' do
-    it 'has a button that takes me to a form wherre i can add a new team to the competition' do
-      visit "/competitions/#{@competition1.id}"
+    it 'has a form where i can fill in a team name and hometown' do
+      visit "/competitions/#{@competition1.id}/teams/new"
 
-      expect(page).to have_button('Add a Team')
+      expect(page).to have_content('Add Team to Competition')
+      expect(page).to have_content('Team Name')
+      expect(page).to have_content('Team Hometown')
+      expect(page).to have_button('Add Team')
 
-      click_on 'Add a Team'
+      fill_in 'name', with: 'Popping Pandas'
+      fill_in 'hometown', with: 'Shanghai'
+      click_on 'Add Team'
 
-      expect(current_path).to eq("/competitions/#{@competition1.id}/teams/new")
+      expect(current_path).to eq("/competitions/#{@competition1.id}")
+      expect(page).to have_content(@team1.name)
+      expect(page).to have_content(@team2.name)
+      expect(page).to have_content(@team4.name)
     end
   end
 end

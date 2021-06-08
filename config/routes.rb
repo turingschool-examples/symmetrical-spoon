@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :competitions, only: [:index, :show]
 
+  get '/competitions/:competition_id/teams/:team_id', to: 'competition_teams#new'
+  post '/competitions/:competition_id/teams/', to: 'competition_teams#create'
 end

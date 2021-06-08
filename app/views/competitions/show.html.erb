@@ -32,3 +32,7 @@
   </tr>
 <%end%>
 </table><br>
+
+<%= form_with url: "/competitions/#{@competition.id}/teams/new", method: :get, local: true do |f| %>
+  <%= f.submit "Add a Team" %>
+<% end %>

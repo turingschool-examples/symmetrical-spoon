@@ -10,5 +10,4 @@ class CompetitionsController < ApplicationController
     @competition = Competition.find(params[:id])
     @teams = @competition.teams
   end
-
 end
