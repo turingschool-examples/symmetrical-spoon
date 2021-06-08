@@ -1,0 +1,19 @@
+<h1><%= @competition.name %></h1>
+<ul>
+  <li><h3><%= @competition.location %></h3></li>
+  <li><h3><%= @competition.sport %></h3></li>
+</ul>
+
+<%= button_to 'Add Team', new_team_path, params: {competition_id: @competition.id}, method: :get, local: true %>
+
+<h2>Teams:</h2>
+<ul>
+  <% @teams.each do |team| %>
+    <li><%= "#{team.nickname}: #{team.hometown}" %></li>
+  <% end %>
+</ul>
+
+<h2>Average Player Age</h2>
+<ul>
+  <li><%= @competition.average_player_age %></li>
+</ul>
