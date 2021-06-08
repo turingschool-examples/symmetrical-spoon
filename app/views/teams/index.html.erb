@@ -2,7 +2,7 @@
 
 <% @teams.by_avg_age.each do |team| %>
   <div id="team-<%=team.id%>">
-    <p><%= team.nickname %></p>
+    <h3><%= team.nickname %></h3>
     <p>Average player age: <%= team.avg_age.round %></p>
   </div>
 <% end %>
