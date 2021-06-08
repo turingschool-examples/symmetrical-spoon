@@ -1,0 +1,8 @@
+<h2><%= @chef.name %></h2>
+
+  <h3>Competitions Index</h3>
+  <% @competitions.each do |dish| %>
+      <%= dish.name %><br>
+      <%= dish.description %>
+      <%= link_to "#{competition.name}", "/competitions/#{competition.id}", method: :get %><br>
+  <% end %>
