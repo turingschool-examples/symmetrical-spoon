@@ -37,6 +37,14 @@ RSpec.describe 'The show page for a competition,' do
     end
   end
 
+  describe 'register new team link,' do
+    it 'navigates to the new page' do
+      click_link 'Register New Team'
+      
+      expect(current_path).to eq new_competition_team_path(@comp_1)
+    end
+  end
+
   describe 'team list,' do
     it 'shows the name and hometown of all the teams for this competition' do
       within '#teams-list' do
