@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :competition do
-    string { "" }
-    string { "" }
-    string { "" }
+    name { Faker::FunnyName.two_word_name }
+    location { Faker::Address.city }
+    sport { 'Basket Ball' }
   end
 end

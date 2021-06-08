@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :team do
-    string { "" }
-    string { "" }
+    hometown { Faker::Address.city }
+    nickname { Faker::FunnyName.two_word_name }
   end
 end

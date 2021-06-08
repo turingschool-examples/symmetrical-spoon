@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :player do
-    string { "" }
-    integer { "" }
-    references { "" }
+    name { Faker::Name.name }
+    age { rand(10..27) }
   end
 end
