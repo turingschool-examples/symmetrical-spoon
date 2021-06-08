@@ -6,57 +6,56 @@ RSpec.describe 'the competition show' do
     @competition_2 = Competition.create!(name: 'Northeast Invitational', location: 'New York', sport: 'pickleball')
     @team_1 = @competition_1.teams.create!(hometown: 'Leesburg', nickname: 'Rockets')
     @team_2 = @competition_1.teams.create!(hometown: 'Houston', nickname: 'Jaguars')
+    @team_3 = @competition_2.teams.create!(hometown: 'Denver', nickname: 'Nuggets')
     @player_1 = Player.create!(name: 'Billy Bigshoes', age: 12)
-    @player_2 = Player.create!(name: 'Steph Curry', age: 12)
-    @player_3 = Player.create!(name: 'Joe Schmoe', age: 12)
+    @player_2 = Player.create!(name: 'Steph Curry', age: 24)
+    @player_3 = Player.create!(name: 'Joe Schmoe', age: 30)
+    @player_4 = Player.create!(name: 'Pat Smith', age: 38)
+    @player_5 = Player.create!(name: 'Jamie Jones', age: 42)
+    @player_6 = Player.create!(name: 'Jamie Jones', age: 20)
 
+    TeamPlayer.create!(team: @team_1, player: @player_1)
+    TeamPlayer.create!(team: @team_1, player: @player_2)
+    TeamPlayer.create!(team: @team_1, player: @player_3)
+    TeamPlayer.create!(team: @team_2, player: @player_4)
+    TeamPlayer.create!(team: @team_2, player: @player_5)
+    TeamPlayer.create!(team: @team_3, player: @player_6)
 
-
-    visit "/competitions/#{competition_1.id}"
+    visit "/competitions/#{@competition_1.id}"
   end
 
-  it 'lists all the competition names' do
+  it 'lists all the competition attributes, name, location, sport' do
     expect(page).to have_content(@competition_1.name)
-    expect(page).to have_content(@competition_2.name)
-    expect(page).to have_content(@competition_3.name)
+    expect(page).to have_content(@competition_1.location)
+    expect(page).to have_content(@competition_1.sport)
+    expect(page).to_not have_content(@competition_2.name)
   end
 
-  it 'displays a link to each competition' do
+  it 'lists all the competition teams nicknames, hometowns' do
     expect(page).to have_content(@competition_1.name)
-    expect(page).to have_link(@competition_1.name)
-
-    click_link(@competition_1.name)
-
-    expect(page).to have_current_path("/competitions/#{@competition_1.id}")
-    expect(page).to_not have_current_path("/competitions")
+    expect(page).to have_content(@team_1.hometown)
+    expect(page).to have_content(@team_1.nickname)
+    expect(page).to have_content(@team_2.hometown)
+    expect(page).to have_content(@team_2.nickname)
+    expect(page).to_not have_content(@team_3.hometown)
+    expect(page).to_not have_content(@team_3.nickname)
   end
 
-  it 'has the name & location of the studio' do
-      visit "/studios/#{@studio_1.id}"
-    expect(page).to have_content("#{@studio_1.name}")
-    expect(page).to have_content("#{@studio_1.location}")
-  end
+end
 
-  it 'has the titles of all the studios movies' do
-      visit "/studios/#{@studio_3.id}"
-    expect(page).to have_content(@movie_3.title)
-    expect(page).to have_content(@movie_4.title)
-    expect(page).to_not have_content(@movie_2.title)
-  end
-
-  it 'has a list of all studio movie actors with no duplicates, only currently working' do
-      visit "/studios/#{@studio_3.id}"
-    expect(page).to have_content(@actor_2.name, count: 1)
-    expect(page).to have_content(@actor_1.name, count: 1)
-    expect(page).to_not have_content(@actor_3.name)
-  end
-
-  it 'has a list of all studio movie actors with no duplicates, only currently working, ordered oldest to youngest' do
-      visit "/studios/#{@studio_3.id}"
-    expect(page.all(".actor")[0].text). to eq(@actor_2.name)
-    expect(page.all(".actor")[1].text). to eq(@actor_1.name)
-    expect(page).to_not have_content(@actor_3.name)
-  end
+  # it 'has a list of all studio movie actors with no duplicates, only currently working' do
+  #     visit "/studios/#{@studio_3.id}"
+  #   expect(page).to have_content(@actor_2.name, count: 1)
+  #   expect(page).to have_content(@actor_1.name, count: 1)
+  #   expect(page).to_not have_content(@actor_3.name)
+  # end
+  #
+  # it 'has a list of all studio movie actors with no duplicates, only currently working, ordered oldest to youngest' do
+  #     visit "/studios/#{@studio_3.id}"
+  #   expect(page.all(".actor")[0].text). to eq(@actor_2.name)
+  #   expect(page.all(".actor")[1].text). to eq(@actor_1.name)
+  #   expect(page).to_not have_content(@actor_3.name)
+  # end
 
   # FROM show.html.erb
   # <h3>Studio Movies Actors</h3>
@@ -82,4 +81,3 @@ RSpec.describe 'the competition show' do
   #     expect(@studio_3.actors_list).to eq([@actor_2, @actor_1])
   #   end
   # end
-end
