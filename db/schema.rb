@@ -26,19 +26,19 @@ ActiveRecord::Schema.define(version: 2021_06_08_152016) do
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.bigint "teams_id"
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["teams_id"], name: "index_players_on_teams_id"
+    t.index ["team_id"], name: "index_players_on_team_id"
   end
 
   create_table "registrations", force: :cascade do |t|
-    t.bigint "teams_id"
-    t.bigint "competitions_id"
+    t.bigint "team_id"
+    t.bigint "competition_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["competitions_id"], name: "index_registrations_on_competitions_id"
-    t.index ["teams_id"], name: "index_registrations_on_teams_id"
+    t.index ["competition_id"], name: "index_registrations_on_competition_id"
+    t.index ["team_id"], name: "index_registrations_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
