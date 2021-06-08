@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Team, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'relationships' do
+    it { should have_and_belong_to_many :competitions }
+    it { should have_many :players }
+  end
 end
