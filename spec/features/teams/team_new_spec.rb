@@ -16,5 +16,13 @@ describe 'teams new' do
     expect(page).to have_field('Nickname')
   end
 
-  it 'clicking submit creates a new team'
+  it 'clicking submit creates a new team' do
+    fill_in 'Hometown', :with=> 'Pittsburgh'
+    fill_in 'Nickname', :with=> 'Hornets'
+    click_button 'Save'
+
+    expect(current_path).to eq("/competitions/#{@competition_1.id}")
+    expect(page).to have_content('Team name: Hornets')
+    expect(page).to have_content('Team location: Pittsburgh')
+  end
 end
