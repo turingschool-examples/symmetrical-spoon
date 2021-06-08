@@ -3,21 +3,25 @@ require 'rails_helper'
 RSpec.describe 'Team Creation', type: :feature do
   describe 'new' do
     it 'renders a form to create a new team' do
-      visit '/teams/new'
+      competition = Competition.create!(name: "Regionals", location: "Denver, CO", sport: "Soccer")
 
-      expect(page).to have_field(:hometown)
-      expect(page).to have_field(:nickname)
+      visit "/competitions/#{competition.id}/teams/new"
+
+      expect(page).to have_field('Hometown')
+      expect(page).to have_field('Nickname')
     end
 
     it 'has a hidden field for competition id' do
-      visit '/teams/new'
+      competition = Competition.create!(name: "Regionals", location: "Denver, CO", sport: "Soccer")
 
-      page.find_by_id("competition-id", visible: false)
+      visit "/competitions/#{competition.id}/teams/new"
+
+      find_field(:team_competition_id, type: :hidden)
     end
   end
 
   describe 'create' do
-    it 'if competition_id is empty, creates a new team upon submission and redirects to teams index' do
+    xit 'if competition_id is empty, creates a new team upon submission and redirects to teams index' do
       visit '/teams/new'
       fill_in :hometown, with: 'Muncie, Indiana'
       fill_in :nickname, with: 'Munchers'
@@ -31,9 +35,10 @@ RSpec.describe 'Team Creation', type: :feature do
     it 'if competition_id is not empty, creates a new team and registration record' do
       competition = Competition.create!(name: "Regionals", location: "Denver, CO", sport: "Soccer")
 
-      visit "/teams/new/?competition_id=#{competition.id}"
-      fill_in :hometown, with: 'Muncie, Indiana'
-      fill_in :nickname, with: 'Munchers'
+      visit "/competitions/#{competition.id}/teams/new"
+
+      fill_in 'Hometown', with: 'Muncie, Indiana'
+      fill_in 'Nickname', with: 'Munchers'
       click_on "Create Team"
 
       expect(page).to have_current_path("/competitions/#{competition.id}")

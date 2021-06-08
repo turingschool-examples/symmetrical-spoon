@@ -38,6 +38,6 @@ RSpec.describe 'Competition Show page', type: :feature do
   end
 
   it 'has a link to register a new team that leads to a team creation form' do
-    expect(page).to have_link("Register a New Team", :href => "/teams/new?competition_id=#{@competition.id}" )
+    expect(page).to have_link("Register a New Team", :href => "/competitions/#{@competition.id}/teams/new")
   end
 end

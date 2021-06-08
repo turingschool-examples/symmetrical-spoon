@@ -13,6 +13,7 @@ RSpec.describe Team, type: :model do
 
       team1 = competition.teams.create!(hometown: "Howell, NJ", nickname: "Howlers")
       team2 = competition.teams.create!(hometown: "Portland, OR", nickname: "Porters")
+      team3 = competition.teams.create!(hometown: "Anchorage, AK", nickname: "Anchors")
 
       player1 = team1.players.create!(name: "Leslie Knope", age: 32)
       player2 = team1.players.create!(name: "Ron Swanson", age: 43)

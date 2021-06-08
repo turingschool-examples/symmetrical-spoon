@@ -2,7 +2,7 @@
 
 <p>Location: <%= @competition.location %></p>
 <p>Sport: <%= @competition.sport %></p>
-<p>Average age of all players: <%= @teams.avg_player_age.round(2) %></p>
+<p>Average age of all players: <%= @avg_player_age.round(2) %></p>
 
 <table>
   <th>Teams Registered</th>
@@ -13,3 +13,6 @@
     </tr>
   <% end %>
 </table>
+
+<br><br>
+<%= link_to "Register a New Team", new_competition_team_path(@competition.id) %>
