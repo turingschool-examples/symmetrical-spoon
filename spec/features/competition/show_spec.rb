@@ -21,9 +21,14 @@ RSpec.describe 'A competition Show Page' do
       @player_8 = @team_3.players.create!(name: 'Sami', age: 9)
       @player_9 = @team_3.players.create!(name: 'Suzie', age: 14)
 
+      @team_4 = Team.create(hometown: 'Fairplay', nickname: 'Anteaters')
+      @player_10 = @team_4.players.create!(name: 'Thomas', age: 13)
+      @player_11 = @team_4.players.create!(name: 'George', age: 15)
+
       Tourney.create!(competition_id: @competition_1.id, team_id: @team_1.id)
       Tourney.create!(competition_id: @competition_1.id, team_id: @team_2.id)
       Tourney.create!(competition_id: @competition_1.id, team_id: @team_3.id)
+      Tourney.create!(competition_id: @competition_2.id, team_id: @team_4.id)
     end
 
     it 'displays the competition attributes' do
@@ -35,6 +40,19 @@ RSpec.describe 'A competition Show Page' do
       expect(page).to_not have_content(@competition_2.name)
       expect(page).to_not have_content(@competition_2.location)
       expect(page).to_not have_content(@competition_2.sport)
+    end
+
+    it 'displays all teams and attributes' do
+      visit("/competitions/#{@competition_1.id}")
+save_and_open_page
+      expect(page).to have_content(@team_1.hometown)
+      expect(page).to have_content(@team_1.nickname)
+      expect(page).to have_content(@team_2.hometown)
+      expect(page).to have_content(@team_2.nickname)
+      expect(page).to have_content(@team_3.hometown)
+      expect(page).to have_content(@team_3.nickname)
+      expect(page).to_not have_content(@team_4.hometown)
+      expect(page).to_not have_content(@team_4.nickname)
     end
   end
 end

@@ -18,7 +18,7 @@ RSpec.describe 'Competition Index Page' do
 
     it 'has links to each competitions show page' do
       visit('/competitions')
-save_and_open_page
+
       expect(page).to have_link(@competition_1.name)
       expect(page).to have_link(@competition_2.name)
       expect(page).to have_link(@competition_3.name)
