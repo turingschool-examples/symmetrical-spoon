@@ -1,10 +1,4 @@
 require 'rails_helper'
-# User Story 1 - Competition Index
-
-# As a user
-# When I visit the competion index
-# Then I see the names of all competitions
-# Each competition name links to its show page
 
 RSpec.describe 'competition index page' do
   describe 'display' do
@@ -32,7 +26,7 @@ RSpec.describe 'competition index page' do
 
       click_on("Indigo League")
 
-      expect(current_path).to eq("/competitions/#{indigo.id}")
+      expect(current_path).to eq("/competitions/#{@indigo.id}")
     end
   end
 end
