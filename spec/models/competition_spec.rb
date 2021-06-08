@@ -4,6 +4,5 @@ RSpec.describe Competition, type: :model do
   describe 'realationships' do
     it {should have_many :competition_teams}
     it {should have_many(:teams).through(:competition_teams)}
-
   end
 end
