@@ -57,8 +57,25 @@ RSpec.describe 'competition show page' do
       expect(page).to_not have_content("tap dancing")
     end
 
-    it 'lists all teams and their attributes'
+    it 'lists all teams and their attributes' do
+      visit "/competitions/#{@indigo.id}"
+
+      expect(page).to have_content("#{@team_1.nickname}")
+      expect(page).to have_content("#{@team_1.hometown}")
+      expect(page).to have_content("#{@team_2.nickname}")
+      expect(page).to have_content("#{@team_2.hometown}")
+      expect(page).to have_content("#{@team_3.nickname}")
+      expect(page).to have_content("#{@team_3.hometown}")
+      expect(page).to have_content("#{@team_4.nickname}")
+      expect(page).to have_content("#{@team_4.hometown}")
+      expect(page).to have_content("#{@team_5.nickname}")
+      expect(page).to have_content("#{@team_5.hometown}")
+      expect(page).to_not have_content("#{@team_6.nickname}")
+      expect(page).to_not have_content("#{@team_6.hometown}")
+    end
     
-    it 'lists all average age of all players in competition'
+    it 'lists all average age of all players in competition' do
+      
+    end
   end
 end
