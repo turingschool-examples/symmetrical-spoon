@@ -34,10 +34,12 @@ RSpec.describe Team, type: :model do
       player2 = team1.players.create!(name: "Ron Swanson", age: 43)
       player3 = team2.players.create!(name: "Tom Haverford", age: 28)
 
-      expect(Team.by_player_avg_age.first.nickname).to eq(team1.nickname)
-      expect(Team.by_player_avg_age.first.avg_age).to eq(37.5)
-      expect(Team.by_player_avg_age.second.nickname).to eq(team2.nickname)
-      expect(Team.by_player_avg_age.second.avg_age).to eq(28)
+      expect(Team.by_player_avg_age.first.nickname).to eq(team3.nickname)
+      expect(Team.by_player_avg_age.first.avg_age).to eq(nil)
+      expect(Team.by_player_avg_age.second.nickname).to eq(team1.nickname)
+      expect(Team.by_player_avg_age.second.avg_age).to eq(37.5)
+      expect(Team.by_player_avg_age.last.nickname).to eq(team2.nickname)
+      expect(Team.by_player_avg_age.last.avg_age).to eq(28)
     end
   end
 end

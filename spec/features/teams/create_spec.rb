@@ -21,14 +21,13 @@ RSpec.describe 'Team Creation', type: :feature do
   end
 
   describe 'create' do
-    xit 'if competition_id is empty, creates a new team upon submission and redirects to teams index' do
+    it 'if competition_id is empty, creates a new team upon submission and redirects to teams index' do
       visit '/teams/new'
-      fill_in :hometown, with: 'Muncie, Indiana'
-      fill_in :nickname, with: 'Munchers'
+      fill_in 'Hometown', with: 'Muncie, Indiana'
+      fill_in 'Nickname', with: 'Munchers'
       click_on "Create Team"
 
       expect(page).to have_current_path("/teams")
-      expect(page).to have_content('Muncie, Indiana')
       expect(page).to have_content('Munchers')
     end
 
