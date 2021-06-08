@@ -4,8 +4,11 @@
 <%= "Competition Location: #{@competition.location}" %>
 <%= "Competition Sport: #{@competition.sport}" %>
 
-<h2>"Participating Teams:</h2>
+<h2>Participating Teams:</h2>
 <% @competition.teams.each do |team| %>
 <%= "Team name: #{team.nickname}" %>
 <%= "Team location: #{team.hometown}" %>
 <% end %>
+
+<h2>Average Participant Age
+  <%= @competition.player_age.to_f.round(2) %></h2>

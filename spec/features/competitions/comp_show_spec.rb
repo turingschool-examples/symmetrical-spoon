@@ -55,4 +55,8 @@ describe 'competition show page' do
     expect(page).not_to have_content('Team name: Monkeys')
     expect(page).not_to have_content('Team location: Boston')
   end
+
+  it 'displays the average player age' do
+    expect(page).to have_content('Average Participant Age 35.67')
+  end
 end
