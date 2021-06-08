@@ -1,10 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'rails_helper'
+
+describe 'competition show page' do
+  before :each do
     @competition_1 = Competition.create!(name:'Tournament of Champions', location:'Harrisburg', sport:'Curling')
     @competition_2 = Competition.create!(name:'Tournament of People Who Are OK at Fencing', location:'Mechanicsburg', sport:'Fencing')
     @competition_3 = Competition.create!(name:'Boxathon', location:'Mckeesport', sport:'Boxing')
@@ -32,3 +29,43 @@
     @player_13 = @team_7.players.create!(name: 'Him', age: 29)
     @player_14 = @team_8.players.create!(name: 'Jim', age: 19)
     @player_15 = @team_9.players.create!(name: 'Vim', age: 9)
+
+    visit "/competitions/#{@competition_1.id}"
+  end
+
+  it 'displays competition name, location, and sport' do
+    expect(page).to have_content("Competition Name: Tournament of Champions")
+    expect(page).to have_content("Competition Location: Harrisburg")
+    expect(page).to have_content("Competition Sport: Curling")
+
+    expect(page).not_to have_content("Competition Name: Boxathon")
+    expect(page).not_to have_content("Competition Location: Mckeesport")
+    expect(page).not_to have_content("Competition Sport: Boxing")
+  end
+
+  it 'displays the name and location of teams in competition' do
+    expect(page).to have_content('Participating Teams:')
+    expect(page).to have_content('Team name: Senators')
+    expect(page).to have_content('Team location: Harrisburg')
+    expect(page).to have_content('Team name: Congressmen')
+    expect(page).to have_content('Team location: Farrisburg')
+    expect(page).to have_content('Team name: Embezzlers')
+    expect(page).to have_content('Team location: Darrisburg')
+
+    expect(page).not_to have_content('Team name: Monkeys')
+    expect(page).not_to have_content('Team location: Boston')
+  end
+
+  it 'displays the average player age' do
+    expect(page).to have_content('Average Participant Age 35.67')
+  end
+
+  it 'contains a link to register a new team' do
+    expect(page).to have_link('Register a new team')
+  end
+
+  it 'clicking that link travels to form for creating new team' do
+    click_link('Register a new team')
+    expect(current_path).to eq "/competitions/#{@competition_1.id}/teams/new"
+  end
+end
