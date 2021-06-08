@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_151551) do
+ActiveRecord::Schema.define(version: 2021_06_08_152812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "competition_teams", force: :cascade do |t|
-    t.bigint "competitions_id"
-    t.bigint "teams_id"
+    t.bigint "competition_id"
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["competitions_id"], name: "index_competition_teams_on_competitions_id"
-    t.index ["teams_id"], name: "index_competition_teams_on_teams_id"
+    t.index ["competition_id"], name: "index_competition_teams_on_competition_id"
+    t.index ["team_id"], name: "index_competition_teams_on_team_id"
   end
 
   create_table "competitions", force: :cascade do |t|
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2021_06_08_151551) do
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_players_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -46,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_151551) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "competition_teams", "competitions", column: "competitions_id"
-  add_foreign_key "competition_teams", "teams", column: "teams_id"
+  add_foreign_key "competition_teams", "competitions"
+  add_foreign_key "competition_teams", "teams"
+  add_foreign_key "players", "teams"
 end

@@ -1,4 +1,4 @@
 class CompetitionTeam < ApplicationRecord
-  belongs_to :competitions
-  belongs_to :teams
+  belongs_to :competition
+  belongs_to :team
 end
