@@ -1,0 +1,12 @@
+<h3>Register New Team</h3>
+
+
+<%= form_with model: [@competition, @team], local: true do |f| %>
+  <%= f.label :nickname %>
+  <%= f.text_field :nickname %><br/><br/>
+
+  <%= f.label :hometown %>
+  <%= f.text_field :hometown %><br/><br/>
+
+  <%= f.submit %>
+<% end %>
