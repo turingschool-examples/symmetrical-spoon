@@ -4,6 +4,9 @@ RSpec.describe 'competition show' do
   it 'links from index to competition show' do
     competition_1 = Competition.create!(name: "Basket Weavers Interstallar", location: "Mars", sport: "Basket Weaving")
     team_1 = Team.create!(nick_name: "The Chompin' Beavers", home_town: "Beaver")
+    player_1 = team_1.players.create!(name: "Joe", age: 30)
+    player_2 = team_1.players.create!(name: "Mary", age: 40)
+    player_3 = team_1.players.create!(name: "Susan", age: 50)
     CompetitionTeam.create!(competition: competition_1, team: team_1)
     visit "/competitions"
 
@@ -15,5 +18,6 @@ RSpec.describe 'competition show' do
     expect(page).to have_content("#{competition_1.sport}")
     expect(page).to have_content("#{team_1.nick_name}")
     expect(page).to have_content("#{team_1.home_town}")
+    expect(page).to have_content("#{team_1.average_age}")
   end
 end
