@@ -1,0 +1,9 @@
+<h1>World Wide Events</h1>
+
+<h3>Watch these upcoming events:</h3>
+<ul>
+  <% @competitions.each do |comp| %>
+    <li><%= link_to comp.name, competition_path(comp.id) %></li>
+  <% end %>
+</ul>
+
