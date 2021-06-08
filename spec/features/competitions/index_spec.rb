@@ -23,6 +23,6 @@ RSpec.describe 'competitions index page' do
 
     click_link(@competition_1.name)
 
-    expect(current_path).to eq("/competitons/#{@competition_1.id}")
+    expect(current_path).to eq("/competitions/#{@competition_1.id}")
   end
 end
