@@ -4,6 +4,8 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :hometown
       t.string :nickname
       t.references :competition, foreign_key: true
+
+      t.timestamps
     end
   end
 end

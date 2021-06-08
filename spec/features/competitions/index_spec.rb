@@ -19,9 +19,10 @@ RSpec.describe 'the competitions index' do
     expect(page).to have_content(@competition_1.name)
     expect(page).to have_link(@competition_1.name)
 
-    click_link("Delete #{pet_1.name}")
+    click_link(@competition_1.name)
 
     expect(page).to have_current_path("/competitions/#{@competition_1.id}")
+    expect(page).to_not have_current_path("/competitions")
   end
 
   # it 'only lists adoptable pets' do
