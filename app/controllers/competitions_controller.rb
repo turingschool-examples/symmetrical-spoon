@@ -14,6 +14,7 @@ class CompetitionsController < ApplicationController
   end
 
   def create
-    require 'pry'; binding.pry
+    @competition = Competition.find(params[:id])
+    team = Team.find_team(params)
   end
 end

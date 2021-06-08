@@ -3,7 +3,8 @@ class Team < ApplicationRecord
   has_many :competition_teams
   has_many :competitions, through: :competition_teams
 
-  def find_team(params)
+  def self.find_team(params)
+    find.where(hometown: params[:hometown])
     require 'pry'; binding.pry
   end
 end
