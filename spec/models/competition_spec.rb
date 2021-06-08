@@ -12,16 +12,15 @@ RSpec.describe Competition do
         @competition = Competition.create!(name:'Kitzbühel', location:'Austria', sport:'downhill skiing')
         @team1 = Team.create(hometown:'Austria',nickname:"crazy skiers")
         @team2 = Team.create(hometown:'US',nickname:"skiers")
-        @player1 = Player.create(name:"Bode Miller", age:50)
-        @player1 = Player.create(name:"Hermann Maier", age:100)
-        @player1 = Player.create(name:"Aksel Lund Svindal", age:30)
+        @player1 = @team1.players.create(name:"Bode Miller", age:50)
+        @player2 = @team2.players.create(name:"Hermann Maier", age:100)
+        @player3 = @team2.players.create(name:"Aksel Lund Svindal", age:30)
         @bracket1 = Bracket.create(competition_id: @competition.id,team_id: @team1.id)
         @bracket2 = Bracket.create(competition_id: @competition.id,team_id: @team2.id)
       end
       it 'returns the teams in the competition' do
-        comps = Competition.player_av_age(@competition.id)
-        binding.pry
-        expect(comps.av_age).to eq(60)
+        age = @competition.player_av_age
+        expect(age).to eq(60)
       end
     end
   end
