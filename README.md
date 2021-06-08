@@ -6,6 +6,8 @@ This repository requires and has been tested on Ruby v2.5.3 and is based on Rail
 
 RSpec and Shoulda-Matchers have been installed and set up.
 
+[User Stories](https://gist.github.com/jamisonordway/daeaef78bbb481f313cb9606b6e3feb6)
+
 ## Setup
 
 1. fork this repo
