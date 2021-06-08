@@ -61,8 +61,19 @@ RSpec.describe 'show' do
     visit "/competitions/#{@comp_1.id}"
       expect(page).to have_content('Average Player Age:')
 
-      visit "/competitions/#{@comp_2.id}"
+    visit "/competitions/#{@comp_2.id}"
       expect(page).to have_content('Average Player Age:')
+    end
+  end
+
+  describe 'link to register new team' do
+    it 'has new team link' do
+
+    visit "/competitions/#{@comp_1.id}"
+      expect(page).to have_link('Register New Team')
+
+    visit "/competitions/#{@comp_2.id}"
+      expect(page).to have_link('Register New Team')
     end
   end
 end
