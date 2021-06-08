@@ -3,6 +3,8 @@
 <h2>Location: <%= @competition.location %></h2>
 <h2>Sport: <%= @competition.sport %></h2>
 
+<h2><%= link_to 'Register A New Team', "/competitions/#{@competition.id}/new" %></h2>
+
 <h3>All Teams in This Competition</h3>
 <h4>Average Age: <%= @players_avg_age %> </h4>
 <% @competition.teams.each do |team| %>
