@@ -7,3 +7,5 @@
 <h5><%= team.nickname %></h5>
 <p>Hometown: <%= team.hometown %></p>
 <% end %>
+
+<%= link_to 'Register New Team', "/competitions/#{@competition.id}/new" %>

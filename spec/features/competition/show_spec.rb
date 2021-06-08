@@ -9,10 +9,36 @@ RSpec.describe 'Competition Show Page' do
     @comp_5 = Competition.create!(name: 'Pickup Game', location: 'Aurora, CO', sport: 'Hockey')
 
     @team_1 = Team.create!(hometown: 'Arvada', nickname: 'Bulldogs')
+
+    @player_1 = @team_1.players.create!(name: 'Roald', age: 21)
+    @player_2 = @team_1.players.create!(name: 'Huey', age: 25)
+    @player_3 = @team_1.players.create!(name: 'Marshall', age: 23)
+
     @team_2 = Team.create!(hometown: 'Golden', nickname: 'Frogs')
+
+    @player_4 = @team_2.players.create!(name: 'Frank', age: 35)
+    @player_5 = @team_2.players.create!(name: 'Big Rick', age: 22)
+    @player_6 = @team_2.players.create!(name: 'Don', age: 40)
+
     @team_3 = Team.create!(hometown: 'Westminster', nickname: 'Penguins')
+
+    @player_7 = @team_3.players.create!(name: 'Dale', age: 20)
+    @player_8 = @team_3.players.create!(name: 'Bill', age: 22)
+    @player_9 = @team_3.players.create!(name: 'Ray', age: 28)
+
+
     @team_4 = Team.create!(hometown: 'Fort Collins', nickname: 'Rapscallions')
+
+    @player_10 = @team_4.players.create!(name: 'Phil', age: 23)
+    @player_11 = @team_4.players.create!(name: 'Claudio', age: 22)
+    @player_12 = @team_4.players.create!(name: 'Travis', age: 20)
+
     @team_5 = Team.create!(hometown: 'Commerce City', nickname: 'Larrys')
+
+    @player_13 = @team_5.players.create!(name: 'Larry', age: 32)
+    @player_14 = @team_5.players.create!(name: 'Larry', age: 21)
+    @player_15 = @team_5.players.create!(name: 'Larry', age: 25)
+
 
     @team_comp_1 = TeamCompetition.create!(team_id: @team_1.id, competition_id: @comp_1.id)
     @team_comp_2 = TeamCompetition.create!(team_id: @team_2.id, competition_id: @comp_1.id)
@@ -44,5 +70,39 @@ RSpec.describe 'Competition Show Page' do
     expect(page).to have_content(@team_3.nickname)
     expect(page).to_not have_content(@team_5.hometown)
     expect(page).to_not have_content(@team_5.nickname)
+  end
+
+  xit 'shows the average age of all players in the competiton' do
+    expect(page).to have_content(13)
+  end
+
+#   As a user
+# When I visit a competition's show page
+# Then I see a link to register a new team
+# When I click this link
+# Then I am taken to a new page where I see a form
+# When I fill in this form with a team's hometown and nickname
+# And I click submit
+# Then I am redirected back to the competition's show page
+# And I see the new team I created listed
+
+  it 'has a link to register a new team' do
+    expect(page).to have_link('Register New Team')
+  end
+
+  it 'can register a new team' do
+    expect(page).to_not have_content('Toads')
+    expect(page).to_not have_content('Brighton')
+
+    click_on 'Register New Team'
+
+    fill_in :nickname, with: 'Toads'
+    fill_in :hometown, with: 'Brighton'
+
+    click_on 'Register'
+
+    expect(current_path).to eq("/competitions/#{@comp_1.id}")
+    expect(page).to have_content('Toads')
+    expect(page).to have_content('Brighton')
   end
 end
