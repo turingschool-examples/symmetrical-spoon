@@ -1,12 +1,22 @@
 <h1><%= @competition.name %></h1>
 <p><%= @competition.location %></p>
 <p><%= @competition.sport %></p>
+
 <hr>
 <h4>Average Age of Players: <%= @competition.players.average(:age) %></h4>
 <hr>
+
 <h3>Teams</h3>
 <ul>
   <% @competition.teams.each do |t| %>
     <li><%= t.nickname.titleize %> | Hometown: <%= t.hometown %></li>
   <% end %>
 </ul>
+
+<hr>
+
+<%= form_with url: "/#{@competition.id}/update", method: :post, local: true do |f| %>
+  <p>Add Team to the <strong><%= @competition.name %></strong> Competition</p>
+  <%= f.select :teams, Team.where.not(id: @competition.teams.ids).map{|t| [t.name, t.id]} %>
+  <%= f.submit %>
+<% end %>

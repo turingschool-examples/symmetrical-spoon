@@ -14,7 +14,7 @@ RSpec.describe 'Competitions Show' do
     teams = competition.teams
     visit "/#{competition.id}"
     teams.each do |t|
-      expect(page).to have_content(t.nickname)
+      expect(page).to have_content(t.nickname.titleize)
       expect(page).to have_content(t.hometown)
     end
   end
@@ -23,5 +23,20 @@ RSpec.describe 'Competitions Show' do
     competition = Competition.first
     visit "/#{competition.id}"
     expect(page).to have_content("Average Age of Players: #{competition.players.average(:age)}")
+  end
+
+  it 'adds new team to competition' do
+    competition = Competition.first
+    team = Team.create! attributes_for(:team)
+    visit "/#{competition.id}"
+
+    within 'form' do
+      select team.name, from: 'teams'
+      click_on 'commit'
+    end
+
+    expect(page).to have_current_path("/#{competition.id}")
+    expect(page).to have_content(team.hometown)
+    expect(page).to have_content(team.nickname)
   end
 end
