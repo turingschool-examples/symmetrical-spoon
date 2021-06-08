@@ -59,4 +59,13 @@ describe 'competition show page' do
   it 'displays the average player age' do
     expect(page).to have_content('Average Participant Age 35.67')
   end
+
+  it 'contains a link to register a new team' do
+    expect(page).to have_link('Register a new team')
+  end
+
+  it 'clicking that link travels to form for creating new team' do
+    click_link('Register a new team')
+    expect(current_path).to eq "/teams/new"
+  end
 end
