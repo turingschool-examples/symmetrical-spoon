@@ -36,4 +36,30 @@ describe 'actor show page' do
       expect(page).to have_content("Average age: 60")
     end
 
+    #     As a user
+    # When I visit a competition's show page
+    # Then I see a link to register a new team
+    # When I click this link
+
+    # Then I am redirected back to the competition's show page
+    # And I see the new team I created listed
+
+    it 'has a link to register new team, send to form' do
+      expect(page).to have_link("add team")
+      click_on ("add team")
+      expect(current_path).to eq "/competitions/#{@competition.id}/teams/new"
+    end
+    
+    # Then I am taken to a new page where I see a form
+    # When I fill in this form with a team's hometown and nickname
+    # And I click submit
+
+    it 'has a form to add a team, fill and submit is redirected to comp page with new team' do
+      click_on ("add team")
+      fill_in 'hometown', with: 'Ontario, CA'
+      fill_in 'nickname', with: 'Canadiens eh'
+      click_on "commit"
+      expect(current_path).to eq "/competitions/#{@competition.id}"
+    end
+
 end
