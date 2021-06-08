@@ -15,7 +15,7 @@ RSpec.describe Competition do
 
         team_1 = Team.create!(hometown: 'Froopyland', nickname: 'Rainbow Rivers')
         team_2 = Team.create!(hometown: 'Earth', nickname: 'MeeSeeks')
-        team_3 = Team.create!(hometown: 'Dog Dimension', nickname: 'Hydrants')
+        team_3 = Team.create!(hometown: 'Dog Dimension', nickname: 'The Hydrants')
 
         comp_1.teams << team_1
         comp_1.teams << team_2
