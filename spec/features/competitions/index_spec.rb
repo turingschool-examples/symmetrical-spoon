@@ -6,7 +6,6 @@ RSpec.describe 'competition index page,' do
     @competition_2 = Competition.create!(name: 'World Cup Qualifier 2', location: "Argentina", sport: "futbol")
     @competition_3 = Competition.create!(name: 'World Cup Qualifier 3', location: "Colombia", sport: "futbol")
 
-
     visit "/competitions"
   end
 
