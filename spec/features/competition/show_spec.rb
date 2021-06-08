@@ -14,13 +14,6 @@ RSpec.describe 'Competitions Show page' do
   end    
 
     #   User Story 2 - Competition Show Page
-
-    # As a user
-    # When I visit a competition's show page
-    # Then I see the competition's name, location, and sport
-    # And I see the name and hometown of all teams in this competition
-    # And I see the average age of all players in the competition
-  
   it 'visit the cometitions show page I see the attributes' do 
     visit competition_path(@competition)   
 
@@ -37,5 +30,12 @@ RSpec.describe 'Competitions Show page' do
     
     expect(page).to have_content(@team_2.hometown)
     expect(page).to have_content(@team_2.nickname)
+  end
+
+  it 'shows the average age of all players in the competition' do
+    visit competition_path(@competition)
+
+    expect(page).to have_content('Average age of players')
+    expect(page).to have_content(22)
   end
 end
