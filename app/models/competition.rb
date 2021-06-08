@@ -3,4 +3,9 @@ class Competition < ApplicationRecord
 
   has_many :tourneys
   has_many :teams, through: :tourneys
+  has_many :players, through: :teams
+
+  def average_age
+    players.average(:age)
+  end
 end
