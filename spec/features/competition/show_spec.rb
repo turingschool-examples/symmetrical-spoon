@@ -24,6 +24,8 @@ RSpec.describe 'Competitions Show page' do
   it 'visit the cometitions show page I see the attributes' do 
     visit competition_path(@competition)   
 
-    expect(page).to have_content()
+    expect(page).to have_content(@competition.name) 
+    expect(page).to have_content(@competition.location)
+    expect(page).to have_content(@competition.sport)
   end
 end
