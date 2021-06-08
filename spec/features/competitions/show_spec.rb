@@ -10,7 +10,7 @@ RSpec.describe 'Competition Show Page' do
   # And I see the name and hometown of all teams in this competition
   # And I see the average age of all players in the competition
 
-  it '' do
+  it 'Story 2' do
     competition_1 = Competition.create!(name: 'Mens Regional', location: 'Louisville', sport: 'basketball')
     hometown_1 = Hometown.create!(hometown: 'Leesburg', nickname: 'Rockets')
     hometown_2 = Hometown.create!(hometown: 'Denver', nickname: 'Nuggets')
@@ -37,6 +37,29 @@ RSpec.describe 'Competition Show Page' do
     expect(page).to have_content(21)
     expect(page).to have_content(23)
     expect(page).to have_content(27)
+  end
+
+  #   As a user
+  # When I visit a competition's show page
+  # Then I see a link to register a new team
+  # When I click this link
+  # Then I am taken to a new page where I see a form
+  # When I fill in this form with a team's hometown and nickname
+  # And I click submit
+  # Then I am redirected back to the competition's show page
+  # And I see the new team I created listed
+
+  it 'Story 3' do
+    competition_1 = Competition.create!(name: 'Mens Regional', location: 'Louisville', sport: 'basketball')
+    visit "/competitions/#{competition_1.id}"
+    expect(page).to have_button("Add a New Team")
+    click_on("Add a New Team")
+    expect(current_path).to eq("/competitions/#{competition_1.id}/teams/new")
+    fill_in('hometown', with: "Portland")
+    fill_in('nickname', with: "Trail Blazers")
+    click_on("Submit")
+    expect(current_path).to eq("/competitions/#{competition_1.id}")
+    expect(page).to have_content("Portland")
   end
 
 

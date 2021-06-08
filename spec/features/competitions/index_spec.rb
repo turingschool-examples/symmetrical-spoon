@@ -9,7 +9,7 @@ RSpec.describe 'Competition Index Page' do
   # Then I see the names of all competitions
   # Each competition name links to its show page
 
-  it '' do
+  it 'Story 1' do
     competition_1 = Competition.create!(name: 'Mens Regional', location: 'Louisville', sport: 'basketball')
     competition_2 = Competition.create!(name: 'Womens Regional', location: 'Louisville', sport: 'basketball')
     competition_3 = Competition.create!(name: 'Mens Volleyball', location: 'San Diego', sport: 'volleyball')
