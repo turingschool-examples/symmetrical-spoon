@@ -22,21 +22,22 @@ RSpec.describe 'competition_teams new page', type: :feature do
 
   describe 'page functionality' do
     it 'has a form where i can fill in a team name and hometown' do
-      visit "/competitions/#{@competition1.id}/teams/new"
+      visit "/competitions/#{@competition1.id}/competition_teams/new"
 
       expect(page).to have_content('Add Team to Competition')
       expect(page).to have_content('Team Name')
       expect(page).to have_content('Team Hometown')
       expect(page).to have_button('Add Team')
 
-      fill_in 'name', with: 'Popping Pandas'
-      fill_in 'hometown', with: 'Shanghai'
+      fill_in 'competition_team[name]', with: 'Popping Pandas'
+      fill_in 'competition_team[hometown]', with: 'Shanghai'
       click_on 'Add Team'
 
       expect(current_path).to eq("/competitions/#{@competition1.id}")
       expect(page).to have_content(@team1.name)
       expect(page).to have_content(@team2.name)
       expect(page).to have_content(@team4.name)
+      expect(page).to_not have_content(@team3.name)
     end
   end
 end

@@ -1,6 +1,6 @@
 <h1>Add Team to Competition</h1>
 
-<%= form_with url: "/competitions/#{@competition.id}/teams", method: :post, local: true do |form| %>
+<%= form_with model: [:competition, @competition_team], method: :post, local: true do |form| %>
   <%= form.label :name, 'Team Name' %>
   <%= form.text_field :name, required: true%><br><br>
   <%= form.label :hometown, 'Team Hometown' %>
