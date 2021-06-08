@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     resources :teams, only: :new
   end
 
-  resources :teams, only: :create
+  resources :teams, only: [:index, :create]
 end
