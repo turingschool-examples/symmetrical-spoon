@@ -1,0 +1,15 @@
+<h1><%= @competition.name %></h1>
+<h2><%= @competition.location %></h2>
+<h2><%= @competition.sport %></h2>
+
+<%= button_to "Add a New Team", "/competitions/#{@competition.id}/teams/new", method: :get %>
+
+<p>Teams Playing:</p>
+<% @competition.hometowns.each do |team| %>
+  <%= team.hometown %><br/>
+  <p>Average Age of Players:</p>
+  <% if team.players.count > 1 %>
+    <%= team.players.average_age %><br/><br/>
+  <% end %>
+  <p>------------------------</p>
+<% end %>
