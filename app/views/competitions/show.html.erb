@@ -10,6 +10,8 @@
   <p><%= team.hometown %></p>
 <% end %>
 
+<%= button_to 'Register my team', new_competition_competition_entry_path(@competition.id), method: :get, local: true  %>
+
 <h2>Stats</h2>
 
-<p>Average player age: <%= @competition.average_player_age.round(2) %></p>
+<p>Average player age: <%= @competition.average_player_age.round %></p>

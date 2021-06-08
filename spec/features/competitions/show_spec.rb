@@ -7,7 +7,7 @@ RSpec.describe 'competition show page' do
 
     @team_1 = Team.create!(hometown: 'Froopyland', nickname: 'Rainbow Rivers')
     @team_2 = Team.create!(hometown: 'Earth', nickname: 'MeeSeeks')
-    @team_3 = Team.create!(hometown: 'Dog Dimension', nickname: 'Hydrants')
+    @team_3 = Team.create!(hometown: 'Dog Dimension', nickname: 'The Hydrants')
 
     @comp_1.teams << @team_1
     @comp_1.teams << @team_2
@@ -47,8 +47,14 @@ RSpec.describe 'competition show page' do
   it 'displays the avg age across all players in the comp' do
     visit "/competitions/#{@comp_1.id}"
 
-    expect(page).to have_content 'Average player age: 33.75'
+    expect(page).to have_content 'Average player age: 34'
   end
 
-  it 'can add a team to the competition'
+  it 'has a link to add a team to the competition' do
+    visit "/competitions/#{@comp_1.id}"
+
+    click_button 'Register my team' 
+
+    expect(current_path).to eq "/competitions/#{@comp_1.id}/competition_entries/new"
+  end
 end
