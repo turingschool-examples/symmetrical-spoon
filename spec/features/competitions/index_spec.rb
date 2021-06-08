@@ -12,10 +12,12 @@ RSpec.describe 'competitions index page' do
   describe 'competitions names' do
     it 'can list all the competitions names and each name is a link to the competition show page' do
 
-      expect(page). to have_link("#{@blue.name}", href: "/competitions/#{@blue.id}")
-      expect(page). to have_link("#{@hilly.name}", href: "/competitions/#{@hilly.id}")
-      expect(page). to have_link("#{@walk.name}", href: "/competitions/#{@walk.id}")
+      expect(page).to have_link("#{@blue.name}", href: "/competitions/#{@blue.id}")
+      expect(page).to have_link("#{@hilly.name}", href: "/competitions/#{@hilly.id}")
+      expect(page).to have_link("#{@walk.name}", href: "/competitions/#{@walk.id}")
 
+      expect(page).to_not have_link("#{@hilly.name}", href: "/competitions/#{@blue.id}")
+      expect(page).to_not have_link("#{@walk.name}", href: "/competitions/#{@hilly.id}")
     end
   end
 end
