@@ -1,0 +1,34 @@
+<h1><%= @competition.name %></h1>
+<h3>Competition Details</h3>
+<table style='width: 30%;'>
+  <tr>
+    <td>Competition Name</td>
+    <td><%= @competition.name %></td>
+  </tr>
+  <tr>
+    <td>Competition Location</td>
+    <td><%= @competition.location %></td>
+  </tr>
+  <tr>
+    <td>Sport</td>
+    <td><%= @competition.sport %></td>
+  </tr><br>
+  <tr>
+      <td>Average Player Age</td>
+      <td><%= @competition.average_player_age %></td>
+    </tr>
+</table><br>
+
+<h3>Competing Teams</h3>
+<table style='width: 30%;'>
+  <tr>
+    <th>Team Name</th>
+    <th>Team Hometown</th>
+  </tr>
+<% @teams.each do |team| %>
+  <tr>
+    <td><%= team.name %></td>
+    <td><%= team.hometown %></td>
+  </tr>
+<%end%>
+</table><br>
