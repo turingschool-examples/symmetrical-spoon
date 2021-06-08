@@ -29,7 +29,7 @@ RSpec.describe 'Competitions Show' do
       expect(page).to have_content('Extreme Pogs')
       expect(page).to have_content('Thunder Dome')
       expect(page).to have_content('Pogs')
-      
+
     end
     it 'has the names and hometowns of all teams in the competition' do
 
@@ -42,6 +42,11 @@ RSpec.describe 'Competitions Show' do
       expect(page).to_not have_content('End Bringers')
       expect(page).to_not have_content('Smallville')
 
+    end
+    it 'has the average age of all players in the competion' do
+
+      expect(page).to have_content(10.83)
+      
     end
   end
 end

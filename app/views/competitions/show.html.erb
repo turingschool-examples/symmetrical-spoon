@@ -10,3 +10,8 @@
     <li><%= "#{team.nickname}: #{team.hometown}" %></li>
   <% end %>
 </ul>
+
+<h2>Average Player Age</h2>
+<ul>
+  <li><%= @competition.average_player_age.round(2) %></li>
+</ul>
