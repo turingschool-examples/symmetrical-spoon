@@ -66,7 +66,7 @@ RSpec.describe 'competitions index page' do
   end
 
   it 'updates show page with new teams after the form has been submitted' do
-    visit "/competitions/#{@competiton_1.id}/teams/new"
+    visit "/competitions/#{@competition_1.id}/teams/new"
 
     fill_in("Nickname:", with: "Team 4 Nickname")
     fill_in("Hometown:", with: "Team 4 Hometown")

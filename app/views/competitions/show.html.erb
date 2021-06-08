@@ -8,3 +8,5 @@
   <p>Nickname: <%= team.nickname %></p>
   <p>Hometown: <%= team.hometown %></p>
 <% end %>
+
+<%= link_to "Register New Team", "/competitions/#{@competition.id}/teams/new" %>
