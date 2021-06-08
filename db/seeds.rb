@@ -15,13 +15,14 @@ Competition.destroy_all
 @competition_2 = Competition.create!(name: 'Northeast Invitational', location: 'New York', sport: 'pickleball')
 @team_1 = @competition_1.teams.create!(hometown: 'Leesburg', nickname: 'Rockets')
 @team_2 = @competition_1.teams.create!(hometown: 'Houston', nickname: 'Jaguars')
+@team_3 = @competition_2.teams.create!(hometown: 'Denver', nickname: 'Nuggets')
 @player_1 = Player.create!(name: 'Billy Bigshoes', age: 12)
 @player_2 = Player.create!(name: 'Steph Curry', age: 24)
 @player_3 = Player.create!(name: 'Joe Schmoe', age: 30)
 @player_4 = Player.create!(name: 'Pat Smith', age: 38)
 @player_5 = Player.create!(name: 'Jamie Jones', age: 41)
 
-@player_6 = Player.create!(name: 'Jamie Jones', age: 20)
+@player_6 = Player.create!(name: 'Jill Smith', age: 20)
 
 TeamPlayer.create!(team: @team_1, player: @player_1)
 TeamPlayer.create!(team: @team_1, player: @player_2)
