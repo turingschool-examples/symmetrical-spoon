@@ -14,7 +14,7 @@ RSpec.describe "The index page for competitions" do
       within '#competitions-list' do
         expect(page).to have_link(@comp1.name, href: competition_path(@comp1))
         expect(page).to have_link(@comp2.name, href: competition_path(@comp2))
-        expect(page).to have_link(@comp3.name, href: competition_path(@comp4))
+        expect(page).to have_link(@comp3.name, href: competition_path(@comp3))
       end
     end
 

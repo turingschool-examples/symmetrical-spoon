@@ -1,2 +1,4 @@
 class CompetitionsController < ApplicationController
-end
+  def index
+    @competitions = Competition.all
+  end
