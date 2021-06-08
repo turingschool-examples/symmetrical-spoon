@@ -2,6 +2,11 @@ require 'rails_helper'
 describe 'actor show page' do 
   before(:each) do
     @competition = Competition.create!(name:'Kitzbühel', location:'Austria', sport:'downhill skiing')
+    @team1 = Team.create(hometown:'Austria',nickname:"crazy skiers")
+    @team2 = Team.create(hometown:'US',nickname:"skiers")
+    @player1 = Player.create(name:"Bode Miller" age:50)
+    @player1 = Player.create(name:"Hermann Maier" age:100)
+    @player1 = Player.create(name:"Aksel Lund Svindal" age:30)
     visit "/competitions/#{@competition.id}"
 
   end
@@ -19,11 +24,14 @@ describe 'actor show page' do
     end
     # And I see the name and hometown of all teams in this competition
     it 'has the competitions teams participating info' do 
-
+      expect(page).to have_content(@team1.hometown)
+      expect(page).to have_content(@team1.nickname)
+      expect(page).to have_content(@team2.hometown)
+      expect(page).to have_content(@team2.nickname)
     end
     # And I see the average age of all players in the competition
     it 'has the players average age' do 
-
+      expect(page).to have_content("Average age: 60")
     end
 
 end
