@@ -25,5 +25,17 @@ RSpec.describe Competition do
                  @player_3.age + @player_4.age) / 4.0)
       expect(@finals.avg_age).to eq exp_avg
     end
+
+    it 'has more efficient way to return average age' do
+      skip "WIP - User Story #2 refactor"
+      # Teams aren't in competition
+        @team_3 = Team.create!(hometown: 'Crickies', nickname: 'Australia')
+        @player_5 = @team_3.players.create!(name: "LOL", age: 13)
+
+      exp_avg = ((@player_1.age + @player_2.age +
+                 @player_3.age + @player_4.age) / 4.0)
+
+      expect(@finals.average_player_age).to eq exp_avg
+    end
   end
 end
