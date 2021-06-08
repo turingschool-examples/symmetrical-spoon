@@ -28,4 +28,14 @@ RSpec.describe 'Competitions Show page' do
     expect(page).to have_content(@competition.location)
     expect(page).to have_content(@competition.sport)
   end
+
+  it 'shows the name and hometown of all teams in competition' do
+    visit competition_path(@competition)   
+    
+    expect(page).to have_content(@team_1.hometown)
+    expect(page).to have_content(@team_1.nickname)
+    
+    expect(page).to have_content(@team_2.hometown)
+    expect(page).to have_content(@team_2.nickname)
+  end
 end
