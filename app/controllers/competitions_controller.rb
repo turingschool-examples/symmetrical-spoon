@@ -5,5 +5,7 @@ class CompetitionsController < ApplicationController
 
   def show
     @competition = Competition.find(params[:id])
+    # binding.pry
+    @players_avg_age = @competition.average_age.round(1)
   end
 end
