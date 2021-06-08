@@ -3,4 +3,8 @@ class CompetitionsController < ApplicationController
     @competitions = Competition.all
   end
 
+  def show
+    @competition = Competition.find(params[:id])
+    @teams = @competition.teams
+  end
 end
