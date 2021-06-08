@@ -1,0 +1,11 @@
+<h1>New Team</h1>
+
+<%= form_with model: @team, local: true, method: :create do |f| %>
+  <%= f.label :nickname, "Team Nickname:" %>
+  <%= f.text_field :nickname  %>
+  <%= f.label :location, "Team location:" %>
+  <%= f.text_field :location  %>
+  <%= f.hidden_field :competition_id, value: @competition.id %>
+  <br><br>
+  <%= f.submit 'Add Team' %>
+<% end %>

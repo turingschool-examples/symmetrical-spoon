@@ -46,7 +46,11 @@ RSpec.describe 'Competitions Show' do
     it 'has the average age of all players in the competion' do
 
       expect(page).to have_content(10.83)
-      
+
+    end
+  end
+  describe 'add team' do
+    it 'should have a button to add a new team' do
     end
   end
 end

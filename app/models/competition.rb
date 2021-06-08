@@ -4,6 +4,10 @@ class Competition < ApplicationRecord
   has_many :teams, through: :competition_teams
 
   def average_player_age
-    teams.joins(:players).average(:age)
+    if self.teams.joins(:players).average(:age) != nil
+      self.teams.joins(:players).average(:age).round(2)
+    else
+      'Add a team.'
+    end
   end
 end
