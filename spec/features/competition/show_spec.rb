@@ -60,6 +60,8 @@ describe 'actor show page' do
       fill_in 'nickname', with: 'Canadiens eh'
       click_on "commit"
       expect(current_path).to eq "/competitions/#{@competition.id}"
+      expect(page).to have_content('Ontario, CA')
+      expect(page).to have_content('Canadiens eh')
     end
 
 end
