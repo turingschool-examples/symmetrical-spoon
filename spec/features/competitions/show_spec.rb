@@ -124,7 +124,7 @@ RSpec.describe 'Competition Show' do
       expect(page).to have_link('Register New Team')
       click_link('Register New Team')
 
-      expect(page).to have_current_path('/teams/new')
+      expect(page).to have_current_path('/competitions/new')
 
       fill_in :hometown, with: 'Baton Rouge'
       fill_in :nickname, with: 'Tigers'
