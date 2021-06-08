@@ -47,6 +47,12 @@ RSpec.describe 'competition section of site' do
       expect(page).to have_content @team_2.nickname
       expect(page).to have_content exp_avg
     end
+
+    it 'has functionality to add a new team' do
+      visit "/competitions/#{@finals.id}"
+      click_link "Add Team"
+      expect(current_path).to eq "/competitions/#{@finals.id}/teams/new"
+    end
   end
 
 end

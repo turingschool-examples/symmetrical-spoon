@@ -7,7 +7,9 @@ class Competition < ApplicationRecord
     # and had to implement a Ruby solution
     total_age = 0
     sum = self.teams.each do |team|
-      total_age += team.players.average_age
+      if !team.players.empty?
+        total_age += team.players.average_age
+      end
     end
     total_age / self.teams.length
   end

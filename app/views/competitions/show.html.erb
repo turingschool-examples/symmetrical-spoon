@@ -11,3 +11,4 @@
 </ul>
 
 <h3>Average Age of Competitors: <%= @competition.avg_age %> years old.</h3>
+<%= link_to 'Add Team', new_competition_team_path(competition_id: @competition.id) %>

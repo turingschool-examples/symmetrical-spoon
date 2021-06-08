@@ -1,0 +1,9 @@
+<h2>Add a Team to <%= @competition.name %></h2>
+
+<%= form_with model: [@competition, Team.new], local: true do |f| %>
+  <%= f.label :nickname %>
+  <%= f.text_area :nickname %>
+  <%= f.label :hometown %>
+  <%= f.text_area :hometown %>
+  <%= f.submit %>
+<% end %>
