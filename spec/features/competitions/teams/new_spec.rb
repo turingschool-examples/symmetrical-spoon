@@ -1,11 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'The new form of a team,' do
-  before :all do
-    @comp = FactoryBot.create(:competition)
-  end
-  
   before :each do
+    @comp = FactoryBot.create(:competition)
     visit new_competition_team_path(@comp)
   end
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'The show page for a competition,' do
 
-  before :all do
+  before :each do
     @comp_1 = FactoryBot.create(:competition)
 
     @team_1 = FactoryBot.create(:team)
@@ -16,12 +16,10 @@ RSpec.describe 'The show page for a competition,' do
     @team_2.players << FactoryBot.create(:player, team: @team_2, age: 14)
     @team_2.players << FactoryBot.create(:player, team: @team_2, age: 13)
     @team_2.players << FactoryBot.create(:player, team: @team_2, age: 10)
-  end
 
-  before :each do
     visit competition_path(@comp_1)
   end
-
+  
   describe 'competition details,' do
     it 'shows the competition details' do
       within '#competition-details' do
