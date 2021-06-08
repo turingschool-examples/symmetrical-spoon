@@ -26,15 +26,16 @@ RSpec.describe 'teams index page' do
     expect(page).to have_content(@team_2.nickname)
     expect(page).to have_content(@team_3.nickname)
 
-    expect(page).to have_content(@team_1.players_average_age)
-    expect(page).to have_content(@team_2.players_average_age)
-    expect(page).to have_content(@team_3.players_average_age)
+    expect(page).to have_content(Team.players_average_age(@team_1.id))
+    expect(page).to have_content(Team.players_average_age(@team_2.id))
+    expect(page).to have_content(Team.players_average_age(@team_3.id))
 
   end
 
   it 'has the teams sorted by average age of players, highest to lowest' do
-    expect(@team_2.players_average_age).to appear_before(@team_1.players_average_age)
+    visit '/teams'
+    expect(@team_2.nickname).to appear_before(@team_1.nickname)
 
-    expect(@team_1.players_average_age).to appear_before(@team_3.players_average_age)
+    expect(@team_1.nickname).to appear_before(@team_3.nickname)
   end
 end

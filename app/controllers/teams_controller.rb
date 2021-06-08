@@ -14,4 +14,7 @@ class TeamsController < ApplicationController
     redirect_to("/competitions/#{@competition.id}")
   end
 
+  def index
+    @teams = Team.all_by_average_player_age
+  end
 end
