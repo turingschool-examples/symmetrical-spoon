@@ -1,0 +1,8 @@
+<h1> <%= @comp.name %> </h1>
+<h2> <%= @comp.location %> </h2>
+<h2> <%= @comp.sport %> </h2>
+
+<% @teams.each do |team| %>
+  <%= team.nickname %> <%= team.hometown %>
+  <%= team.ave_players_age %><br><br>
+<% end %>
