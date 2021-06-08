@@ -4,10 +4,18 @@ class TeamsController < ApplicationController
     @competition_id = params[:competition_id]  end
 
   def create
-    # binding.pry
-    competition = Competition.find(params[:team][:competition_id])
-    competition.teams.create!(hometown: params[:team][:hometown], nickname: params[:team][:nickname])
+    if params[:team][:competition_id]
+      competition = Competition.find(params[:team][:competition_id])
+      competition.teams.create!(team_params)
 
-    redirect_to "/competitions/#{competition.id}"
+      redirect_to "/competitions/#{competition.id}"
+    else
+      Team.create!(team_params)
+    end
+  end
+
+  private
+  def team_params
+    params.require(:team).permit(:hometown, :nickname)
   end
 end
