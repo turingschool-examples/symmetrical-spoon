@@ -23,19 +23,19 @@ RSpec.describe 'Teams Index', type: :feature do
   end
 
   it 'Shows the average age of players for each team' do
-    within(".#{@team1.id}") do
+    within("#team-#{@team1.id}") do
       expect(page).to have_content(37.5)
     end
-    within(".#{@team2.id}") do
+    within("#team-#{@team2.id}") do
       expect(page).to have_content(25)
     end
-    within(".#{@team3.id}") do
+    within("#team-#{@team3.id}") do
       expect(page).to have_content(30)
     end
   end
 
   it 'Sorts teams by average age of players from highest to lowest' do
     expect(@team1.nickname).to appear_before(@team3.nickname)
-    expect(@team3.nickname).to appear_before(@team3.nickname)
+    expect(@team3.nickname).to appear_before(@team2.nickname)
   end
 end

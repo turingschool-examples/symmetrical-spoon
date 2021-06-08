@@ -7,4 +7,11 @@ class Team < ApplicationRecord
     joins(:players)
     .average(:age)
   end
+
+  def self.by_player_avg_age
+    joins(:players)
+    .select("teams.*, AVG(players.age) AS avg_age")
+    .group(:id)
+    .order("avg_age DESC")
+  end
 end

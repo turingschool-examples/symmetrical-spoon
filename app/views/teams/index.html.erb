@@ -1,0 +1,12 @@
+<h1>Teams Index</h1>
+
+<table>
+  <th>Teams</th>
+  <th>Average Player Age</th>
+  <% @teams.each do |team| %>
+    <tr id="team-<%=team.id%>">
+      <td><%= team.nickname %></td>
+      <td><%= team.avg_age.round(2) %></td>
+    </tr>
+  <% end %>
+</table>

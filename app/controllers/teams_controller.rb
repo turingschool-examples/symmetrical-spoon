@@ -1,7 +1,12 @@
 class TeamsController < ApplicationController
   def new
     @team = Team.new
-    @competition_id = params[:competition_id]  end
+    @competition_id = params[:competition_id]
+  end
+
+  def index
+    @teams = Team.by_player_avg_age
+  end
 
   def create
     if params[:team][:competition_id]
