@@ -49,7 +49,9 @@ RSpec.describe 'competitions index page' do
   it 'has the average age of all players in the competition' do
     visit "/competitions/#{@competition_1.id}"
 
-    expect(page).to have_content("Average Age of Players In Competition:")
-    expect(page).to have_content(@competition_1.players_average_age)
+    expect(page).to have_content("Average Age of Players in Competition:")
+    within "#avg_age" do
+      expect(page).to have_content("25")
+    end
   end
 end
