@@ -1,1 +1,13 @@
-<h2>Placeholder</h2>
+<h2>Welcome to <%= @competition.name %>!</h2>
+
+<p>This <%= @competition.sport %>event takes place in <%= @competition.location %>.</p>
+
+<h3>Teams in Play</h3>
+<ul>
+  <strong>The following teams are playing:</strong>
+  <% @competition.teams.each do |t| %>
+    <li><%= t.nickname %> from <%= t.hometown %></li>
+  <% end %>
+</ul>
+
+<h3>Average Age of Competitors: <%= @competition.avg_age %> years old.</h3>
