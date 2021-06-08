@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+# Vim files
+*.swp
+*.swo
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
