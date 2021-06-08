@@ -14,4 +14,10 @@ describe 'competitions index' do
     expect(page).to have_content('Tournament of People Who Are OK at Fencing')
     expect(page).to have_content('Boxathon')
   end
+
+  it 'each competition name is a link to its show page' do
+    expect(page).to have_link('Tournament of Champions')
+    expect(page).to have_link('Tournament of People Who Are OK at Fencing')
+    expect(page).to have_link('Boxathon')
+  end
 end
