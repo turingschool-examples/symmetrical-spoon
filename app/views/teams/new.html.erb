@@ -1,0 +1,7 @@
+<%= form_with url: "/competitions/#{@competition.id}/teams" do |f| %>
+  <%= f.label  :hometown,"Hometown"%>
+  <%= f.text_field  :hometown%>
+  <%= f.label  :nickname,"Nickname"%>
+  <%= f.text_field  :nickname%>
+  <%= f.submit 'submit' %>
+<% end %>
