@@ -30,11 +30,13 @@ RSpec.describe 'competitions show page' do
       expect(page).to have_content("#{@blue.sport}")
     end
 
-    it 'can list the competitions teams and their attributes' do
+    it 'can list the competitions teams, their attributes and the average age of their players' do
       visit "/competitions/#{@blue.id}"
 
       expect(page).to have_content("#{@pollies.nickname}")
       expect(page).to have_content("#{@pollies.hometown}")
+      expect(page).to have_content(@pollies.ave_players_age)
+
       expect(page).to have_content("#{@babes.hometown}")
       expect(page).to have_content("#{@babes.nickname}")
     end

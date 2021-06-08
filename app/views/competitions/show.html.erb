@@ -3,5 +3,6 @@
 <h2> <%= @comp.sport %> </h2>
 
 <% @teams.each do |team| %>
-  <%= team.nickname %> <%= team.hometown %><br><br>
+  <%= team.nickname %> <%= team.hometown %>
+  <%= team.ave_players_age %><br><br>
 <% end %>
