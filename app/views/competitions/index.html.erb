@@ -1,0 +1,15 @@
+<h3>Competitions</h3>
+<table class='table' id='competitions-list'>
+  <thead>
+    <tr>
+      <th>Name of Competition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @competitions.each do |competition| %>
+      <tr>
+        <td><%= link_to competition.name, competition_path(competition), class:'btn btn-link' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

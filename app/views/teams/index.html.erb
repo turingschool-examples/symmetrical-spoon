@@ -1,0 +1,16 @@
+<table class='table' id='team-list'>
+  <thead>
+    <tr>
+      <th>Team Name</th>
+      <th>Average Team Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr id='team-<%=team.id%>'>
+        <td><%= team.nickname %></td>
+        <td><%= team.average_player_age %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

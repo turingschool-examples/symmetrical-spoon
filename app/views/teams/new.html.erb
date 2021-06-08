@@ -1,0 +1,13 @@
+<h3>Register Team Form for <%= @competition.name %></h3>
+<%= form_with model: @team, url: competition_teams_path(@competition), local: true do |form| %>
+  <div class='form-group'>
+    <%= form.label :nickname %>
+    <%= form.text_field :nickname, class:'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= form.label :hometown %>
+    <%= form.text_field :hometown, class:'form-control' %>
+  </div>
+
+  <%= form.submit 'Register Team' %>
+<% end %>

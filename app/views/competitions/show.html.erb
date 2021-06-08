@@ -1,0 +1,40 @@
+<h3>Competition Details</h3>
+<br/>
+<table class='table' id='competition-details'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Sport</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @competition.name%></td>
+      <td><%= @competition.location%></td>
+      <td><%= @competition.sport%></td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<h4>Teams Playing in Competition</h4>
+<table class='table' id='teams-list'>
+  <thead>
+    <tr>
+      <th>Team Name</th>
+      <th>Hometown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr id='team-<%=team.id%>'>
+        <td><%= team.nickname%></td>
+        <td><%= team.hometown%></td>
+      </tr>
+    <% end %>
+    <tr id='average-player-age'>
+      <td colspan='3'>Average Age for all Players: <%= @competition.average_player_age %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'Register New Team', new_competition_team_path(@competition) %>
