@@ -9,5 +9,7 @@
   <p> <%= "Nickname: #{team.nickname}" %> </p>
 <% end %>
 
+<%= link_to "Register New Team", "/competitions/new" %>
+
 <h3>Average Age of Players</h3>
 <%= @competition.players.average_age %>
