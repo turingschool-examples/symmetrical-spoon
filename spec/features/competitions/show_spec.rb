@@ -54,4 +54,28 @@ RSpec.describe 'competitions index page' do
       expect(page).to have_content("25")
     end
   end
+
+  it 'has a link to register a new team which redirects to the new team page' do
+    visit "/competitions/#{@competition_1.id}"
+
+    expect(page).to have_link("Register New Team", href: "/competitions/#{@competition_1.id}/teams/new")
+
+    click_link("Register New Team")
+
+    expect(current_path).to eq("/competitions/#{@competition_1.id}/teams/new")
+  end
+
+  it 'updates show page with new teams after the form has been submitted' do
+    visit "/competitions/#{@competiton_1.id}/teams/new"
+
+    fill_in("Nickname:", with: "Team 4 Nickname")
+    fill_in("Hometown:", with: "Team 4 Hometown")
+
+    click_button("Submit")
+
+    expect(current_path).to eq("/competitions/#{@competition_1.id}")
+
+    expect(page).to have_content("Team 4 Nickname")
+    expect(page).to have_content("Team 4 Hometown")
+  end
 end
