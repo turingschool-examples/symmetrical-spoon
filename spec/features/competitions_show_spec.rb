@@ -37,6 +37,6 @@ RSpec.describe 'Competitions Show' do
 
     expect(page).to have_current_path("/#{competition.id}")
     expect(page).to have_content(team.hometown)
-    expect(page).to have_content(team.nickname)
+    expect(page).to have_content(team.nickname.titleize)
   end
 end

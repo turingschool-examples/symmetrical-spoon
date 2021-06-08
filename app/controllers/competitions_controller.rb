@@ -8,6 +8,8 @@ class CompetitionsController < ApplicationController
   end
 
   def update
-
+    competition = Competition.find params[:id]
+    competition.teams << Team.find(params[:teams])
+    redirect_to "/#{competition.id}"
   end
 end
