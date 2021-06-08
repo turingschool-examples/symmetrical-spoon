@@ -23,4 +23,12 @@ RSpec.describe 'caseompetition show page' do
     expect(page).to have_content(@team_2.hometown)
     expect(page).to have_content(@team_2.nickname)
   end
+
+  it 'has a link to register a new team' do
+    visit "/competitions/#{@game.id}"
+
+    click_link 'Register Team'
+
+    expect(current_path).to eq("/competitions/#{@game.id}/new")
+  end
 end

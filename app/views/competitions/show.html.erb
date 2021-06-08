@@ -7,3 +7,5 @@
   <p><%= team.hometown %></p>
   <p><%= team.nickname %></p>
 <% end %>
+
+<%= link_to 'Register Team',  "/competitions/#{@competition.id}/new", method: :get %>
