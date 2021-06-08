@@ -20,4 +20,10 @@ describe 'competitions index' do
     expect(page).to have_link('Tournament of People Who Are OK at Fencing')
     expect(page).to have_link('Boxathon')
   end
+
+  it 'clicking a link travels to competition show page' do
+    click_link('Boxathon')
+
+    expect(current_path).to eq("/competitions/#{@competition_3.id}")
+  end
 end
