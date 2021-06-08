@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Competition, type: :model do
   describe 'relationships' do
     it { should have_many(:teams) }
-    # it { should have_many(:players).through(:teams) }
   end
 
   describe 'validations' do
@@ -36,12 +35,4 @@ RSpec.describe Competition, type: :model do
       end
     end
   end
-
-  # describe 'class methods' do
-  #   describe '#adoptable' do
-  #     it 'returns adoptable pets' do
-  #       expect(Pet.adoptable).to eq([@pet_1, @pet_2])
-  #     end
-  #   end
-  # end
 end

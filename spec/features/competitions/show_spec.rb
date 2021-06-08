@@ -45,43 +45,10 @@ RSpec.describe 'the competition show' do
     expect(page).to have_content("Competition Players Average Age:")
     expect(page).to have_content(29)
   end
+
+  it 'has a link to register a new team' do
+    expect(page).to have_link("Register New Team")
+    click_link("Register New Team")
+    expect(current_path).to eq("/competitions/#{@competition_1.id}/new_team")
+  end
 end
-
-  # it 'has a list of all studio movie actors with no duplicates, only currently working' do
-  #     visit "/studios/#{@studio_3.id}"
-  #   expect(page).to have_content(@actor_2.name, count: 1)
-  #   expect(page).to have_content(@actor_1.name, count: 1)
-  #   expect(page).to_not have_content(@actor_3.name)
-  # end
-  #
-  # it 'has a list of all studio movie actors with no duplicates, only currently working, ordered oldest to youngest' do
-  #     visit "/studios/#{@studio_3.id}"
-  #   expect(page.all(".actor")[0].text). to eq(@actor_2.name)
-  #   expect(page.all(".actor")[1].text). to eq(@actor_1.name)
-  #   expect(page).to_not have_content(@actor_3.name)
-  # end
-
-  # FROM show.html.erb
-  # <h3>Studio Movies Actors</h3>
-  # <% @studio.actors_list.each do |actor| %>
-  #   <p class="actor">&emsp;<%= actor.name %></p><br/>
-  # <% end %>
-
-  # FROM movie show_spec
-  # it 'has form to add an actor to the movie' do
-  #   visit "/movies/#{@movie_1.id}"
-  #
-  #   expect(page).to_not have_content(@actor_2.name)
-  #   fill_in :actor_id, with: @actor_2.id
-  #   # fill_in :actor_name, with: @actor_2.name
-  #   click_on "Add Actor to Movie"
-  #
-  #   expect(current_path).to eq("/movies/#{@movie_1.id}")
-  #   expect(page).to have_content(@actor_2.name)
-  # end
-
-  # describe '.actors_list' do #'instance methods'
-  #   it 'returns all currently working actors, for studio, ordered by age, desc, no duplicates' do
-  #     expect(@studio_3.actors_list).to eq([@actor_2, @actor_1])
-  #   end
-  # end

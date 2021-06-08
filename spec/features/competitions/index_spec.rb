@@ -24,30 +24,4 @@ RSpec.describe 'the competitions index' do
     expect(page).to have_current_path("/competitions/#{@competition_1.id}")
     expect(page).to_not have_current_path("/competitions")
   end
-
-  # it 'only lists adoptable pets' do
-  #   visit "/pets"
-  #
-  #   expect(page).to_not have_content(pet_3.name)
-  # end
-  #
-  # it 'displays a link to edit each pet' do
-  #   visit '/pets'
-  #
-  #   expect(page).to have_content("Edit #{pet_1.name}")
-  #   expect(page).to have_content("Edit #{pet_2.name}")
-  #
-  #   click_link("Edit #{pet_1.name}")
-  #
-  #   expect(page).to have_current_path("/pets/#{pet_1.id}/edit")
-  # end
-
-
-#   it "allows the user to delete a pet" do
-#   click_on("Delete #{pet.name}")
-#
-#   expect(page).to have_current_path('/pets')
-#   expect(page).to_not have_content(pet.name)
-# end
-
 end
