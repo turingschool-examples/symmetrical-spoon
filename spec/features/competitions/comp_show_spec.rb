@@ -37,5 +37,22 @@ describe 'competition show page' do
     expect(page).to have_content("Competition Name: Tournament of Champions")
     expect(page).to have_content("Competition Location: Harrisburg")
     expect(page).to have_content("Competition Sport: Curling")
+
+    expect(page).not_to have_content("Competition Name: Boxathon")
+    expect(page).not_to have_content("Competition Location: Mckeesport")
+    expect(page).not_to have_content("Competition Sport: Boxing")
+  end
+
+  it 'displays the name and location of teams in competition' do
+    expect(page).to have_content('Participating Teams:')
+    expect(page).to have_content('Team name: Senators')
+    expect(page).to have_content('Team location: Harrisburg')
+    expect(page).to have_content('Team name: Congressmen')
+    expect(page).to have_content('Team location: Farrisburg')
+    expect(page).to have_content('Team name: Embezzlers')
+    expect(page).to have_content('Team location: Darrisburg')
+
+    expect(page).not_to have_content('Team name: Monkeys')
+    expect(page).not_to have_content('Team location: Boston')
   end
 end

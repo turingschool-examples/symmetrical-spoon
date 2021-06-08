@@ -3,3 +3,9 @@
 <%= "Competition Name: #{@competition.name}" %>
 <%= "Competition Location: #{@competition.location}" %>
 <%= "Competition Sport: #{@competition.sport}" %>
+
+<h2>"Participating Teams:</h2>
+<% @competition.teams.each do |team| %>
+<%= "Team name: #{team.nickname}" %>
+<%= "Team location: #{team.hometown}" %>
+<% end %>
