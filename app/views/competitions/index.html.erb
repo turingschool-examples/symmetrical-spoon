@@ -1,0 +1,5 @@
+<h1>Competitions</h1>
+
+<% @competitions.each do |comp| %>
+  <p><%= link_to comp.name, competition_path(comp.id), local: true %></p>
+<% end %>
