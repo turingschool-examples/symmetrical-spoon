@@ -3,6 +3,7 @@
 <h2>Sport: <%= @competition.sport %></h2>
 
 <h1>All Teams</h1>
+<%= button_to "Register New Team", "/competitions/#{@competition.id}/registrations", method: :get %>
 <% @competition.teams.each do |team| %>
   <h3> Nickname: <%= team.nickname %></h3>
   <h4> Hometown: <%= team.hometown %></h4>

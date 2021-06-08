@@ -35,6 +35,7 @@ RSpec.describe 'competition show page' do
       @rick = @team_5.players.create!(name: "Rick", age: 21)
       @pick = @team_5.players.create!(name: "Pick", age: 22)
       Registration.create!(competition: @scarlet, team: @team_6)
+      @team_7 = Team.create!(nickname:"Washers", hometown: "Banksy")
     end
 
     it 'shows name of competition and attributes' do
@@ -72,27 +73,23 @@ RSpec.describe 'competition show page' do
       expect(page).to have_content("Average Age of All Players in Competition: 25.6")
     end
 
-
-    # As a user
-    # When I visit a competition's show page
-    # Then I see a link to register a new team
-    # When I click this link
-    # Then I am taken to a new page where I see a form
-    # When I fill in this form with a team's hometown and nickname
-    # And I click submit
-    # Then I am redirected back to the competition's show page
-    # And I see the new team I created listed
-
-    it 'links to registration page for a new team'
+    it 'links to registration page for a new team' do
       visit "/competitions/#{@indigo.id}"
       
-      expect(page).to_not have_content("#{team_6.name}")
+      expect(page).to_not have_content("#{@team_7.nickname}")
+      expect(page).to_not have_content("#{@team_7.hometown}")
 
-      click_on('Register Team')
+      click_on('Register New Team')
 
-      expect(current_path).to eq("competition/#{@indigo.id}/registrations/new")
+      expect(current_path).to eq("/competitions/#{@indigo.id}/registrations")
       
-      expect(page).to have_content("#{team_6.name}")
+      fill_in 'Nickname', with: 'Washers'
+      fill_in 'Hometown', with: 'Banksy'
+      click_button 'Register Team'
+      
+      expect(page).to have_content("#{@team_7.nickname}")
+      expect(page).to have_content("#{@team_7.hometown}")
+      expect(page).to have_current_path("/competitions/#{@indigo.id}")
     end
   end
 end
