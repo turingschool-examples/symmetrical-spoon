@@ -31,29 +31,23 @@ RSpec.describe 'competition show page' do
     expect(page).to_not have_content @comp_2.name
   end
 
-  it 'displays the name and hometown of all players in the comp' do
+  it 'displays the nickname and hometown of all teams in the comp' do
     visit "/competitions/#{@comp_1.id}"
 
-    expect(page).to have_content @player_1.name
-    expect(page).to have_content @player_1.hometown
+    expect(page).to have_content @team_1.nickname
+    expect(page).to have_content @team_1.hometown
 
-    expect(page).to have_content @player_2.name
-    expect(page).to have_content @player_2.hometown
-    
-    expect(page).to have_content @player_3.name
-    expect(page).to have_content @player_3.hometown
+    expect(page).to have_content @team_2.nickname
+    expect(page).to have_content @team_2.hometown
 
-    expect(page).to have_content @player_4.name
-    expect(page).to have_content @player_4.hometown
-
-    expect(page).to_not have_content @player_5.name
-    expect(page).to_not have_content @player_5.hometown
+    expect(page).to_not have_content @team_3.nickname
+    expect(page).to_not have_content @team_3.hometown
   end
 
   it 'displays the avg age across all players in the comp' do
     visit "/competitions/#{@comp_1.id}"
 
-    expect(page).to have_content 'Average age: 33.75'
+    expect(page).to have_content 'Average player age: 33.75'
   end
 
   it 'can add a team to the competition'
