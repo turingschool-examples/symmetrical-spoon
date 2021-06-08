@@ -46,7 +46,6 @@ RSpec.describe 'register for competition page' do
     fill_in :nickname, with: 'The Hydrants'
     fill_in :hometown, with: 'Dog Dimension'
     click_button 'Register'
-    save_and_open_page
 
     expect(current_path).to eq "/competitions/#{comp_1.id}/competition_entries/new"
     expect(page).to have_content 'Error: Information entered does not match any team in our system'

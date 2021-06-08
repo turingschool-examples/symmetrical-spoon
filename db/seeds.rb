@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Player.destroy_all
 Competition.destroy_all
 Team.destroy_all
-Player.destroy_all
 
 comp_1 = Competition.create!(name: 'Show Me What You Got', location: 'Space', sport: 'Performance art')
 comp_2 = Competition.create!(name: 'Intergalactic Baseball', location: 'The Milky Way', sport: 'Baseball')
