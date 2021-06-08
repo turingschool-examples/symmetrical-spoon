@@ -1,0 +1,5 @@
+<h3>Competitions Index</h3>
+<% @competitions.each do |competition| %>
+    <%= competition.name %><br>
+    <%= link_to "#{competition.name}", "/competitions/#{competition.id}", method: :get %><br/>
+<% end %>
