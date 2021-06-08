@@ -8,4 +8,8 @@ class CompetitionsController < ApplicationController
     @competition = Competition.find(params[:id])
     @teams = Team.all
   end
+
+  def new
+    
+  end
 end
