@@ -29,6 +29,6 @@ RSpec.describe 'caseompetition show page' do
 
     click_link 'Register Team'
 
-    expect(current_path).to eq("/competitions/#{@game.id}/new")
+    expect(current_path).to eq("/teams/new")
   end
 end

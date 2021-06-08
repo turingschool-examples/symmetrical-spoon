@@ -2,14 +2,16 @@ require 'rails_helper'
 
 RSpec.describe 'create new team' do
   it 'creates a new team' do
+    @game = Competition.create!(name: 'Mens Regional', location: 'Brooklyn', sport:'Basketball')
+    team = Team.create!(hometown: 'LES', nickname: 'LaSalle')
     visit "/competitions/#{@game.id}"
 
     click_link 'Register Team'
 
-    expect(current_path).to eq("/competitions/#{@game.id}/new")
+    visit "/teams/new"
 
-    fill_in 'Hometown', with: 'LES'
-    fill_in 'Nickname', with: 'LaSalle'
+    fill_in 'hometown', with: 'LES'
+    fill_in 'nickname', with: 'LaSalle'
 
     click_on 'Submit'
 
