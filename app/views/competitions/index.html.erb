@@ -6,7 +6,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= @competitions.each do |competition| %>
+    <% @competitions.each do |competition| %>
       <tr>
         <td><%= link_to competition.name, competition_path(competition), class:'btn btn-link' %></td>
       </tr>
