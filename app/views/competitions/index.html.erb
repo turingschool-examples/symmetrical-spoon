@@ -1,0 +1,7 @@
+<% @competitions.each do |competition| %>
+  <div id="competition-<%= competition.id %>">
+    <h3><a href="/competitions/<%= competition.id %>"><%= competition.name %></a></h3>
+      <p><%= competition.location %></p>
+      <p><%= competition.sport %></p>
+  </div>
+<% end %>
