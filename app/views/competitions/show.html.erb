@@ -1,5 +1,12 @@
 <h1><%= @competition.name %></h1>
 <ul>
-  <li><h2><%= @competition.location %></h2></li>
-  <li><h2><%= @competition.sport %></h2></li>
+  <li><h3><%= @competition.location %></h3></li>
+  <li><h3><%= @competition.sport %></h3></li>
+</ul>
+
+<h2>Teams:</h2>
+<ul>
+  <% @teams.each do |team| %>
+    <li><%= "#{team.nickname}: #{team.hometown}" %></li>
+  <% end %>
 </ul>
