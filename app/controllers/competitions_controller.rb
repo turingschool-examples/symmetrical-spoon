@@ -8,14 +8,17 @@ class CompetitionsController < ApplicationController
     @teams = @competition.teams
   end
 
-  def new
-  end
-
-  def update
-    @competition = Competition.find(params[:id])
-    Team.create(hometown: params[:hometown],
-                nickname: params[:nickname]
-                )
-    redirect_to "/competitions/#{@competition.id}"
-  end
+  # def new
+  #   # binding.pry
+  #   @competition = Competition.new
+  # end
+  #
+  # def create
+  #   # binding.pry
+  #   @competition = Competition.find(params[:id])
+  #   Team.create(hometown: params[:hometown],
+  #               nickname: params[:nickname]
+  #               )
+  #   redirect_to "/competitions/#{@competition.id}"
+  # end
 end
