@@ -1,0 +1,12 @@
+<%= form_with url: "/competitions/#{@competition.id}/new", method: :post, local: true do |f| %>
+  <%= f.hidden_field :application_status, :value => "In Progress" %>
+
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :hometown %><br>
+  <%= f.text_field :hometown %><br>
+
+  <br>
+  <%= f.submit "Submit" %>
+<% end %>
