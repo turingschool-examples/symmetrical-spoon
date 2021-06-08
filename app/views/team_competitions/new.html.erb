@@ -1,4 +1,4 @@
-<%= form_with url: "/competitions/#{@competition.id}", method: :post, local: true do |f| %>
+<%= form_with url: "/team_competitions/#{@competition.id}", method: :post, local: true do |f| %>
 <%= f.label :nickname %>
 <%= f.text_field :nickname %>
 <%= f.label :hometown %>
