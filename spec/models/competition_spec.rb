@@ -4,6 +4,7 @@ RSpec.describe Competition do
   describe 'relationships' do
     it {should have_many :competition_entries}
     it {should have_many(:teams).through(:competition_entries)}
+    it {should have_many(:players).through(:teams)}
   end
 
   describe 'instance methods' do
@@ -28,7 +29,7 @@ RSpec.describe Competition do
         player_5 = Player.create!(name: "Beth Smith", age: 34, team_id: team_2.id)
         player_3 = Player.create!(name: "Jerry Smith", age: 40, team_id: team_3.id)
 
-        expect(@comp_1.average_player_age).to eq 33.75
+        expect(comp_1.average_player_age).to eq 33.75
       end
     end
   end
