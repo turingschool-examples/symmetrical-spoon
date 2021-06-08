@@ -16,7 +16,7 @@ RSpec.describe 'competition index page' do
 
     it 'shows names of all competitions' do
       visit "/competitions"
-
+      save_and_open_page
       expect(page).to have_content("Indigo League")
       expect(page).to have_content("Scarlet League")
     end
