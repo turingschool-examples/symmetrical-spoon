@@ -5,6 +5,7 @@ RSpec.describe Competition do
   describe 'relationships' do
     it {should have_many(:team_competitions)}
     it {should have_many(:teams).through(:team_competitions)}
+    it {should have_many(:players).through(:teams)}
   end
 
   describe 'validations' do
