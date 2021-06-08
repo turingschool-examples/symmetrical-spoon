@@ -1,0 +1,6 @@
+<h1><%= "#{@competition.sport}: #{@competition.name}, #{@competition.location}" %></h1>
+<p><% @teams.each do |team| %></p>
+<p><%= "#{team.nickname}, #{team.hometown}" %></p>
+<% end %>
+<p>Average Age of Players: <%= @competition.avg_player_age %></p>
+<%= link_to "Register Team", new_competition_team_path(@competition) %>
