@@ -12,4 +12,6 @@
 <% @competition.teams.each do |team| %>
   <h3>Team Name: <%= team.nickname %></h3>
   <h3>Team Hometown: <%= team.hometown %></h3>
+  <h3>Average Player Age: <%= team.average_age %></h3>
+  <br>
 <% end %>

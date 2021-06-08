@@ -61,7 +61,7 @@ Teams can be in many competitions
 
 Teams can have many players
 
-Players belong to a team
+Players belong to a  team
 
 
 
