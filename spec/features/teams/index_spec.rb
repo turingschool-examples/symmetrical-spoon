@@ -34,7 +34,7 @@ RSpec.describe 'team index' do
       expect(page).to have_content 'Average player age: 40'
     end
 
-    expect(@team_1.name).to appear_before(@team_3.name)
-    expect(@team_3.name).to appear_before(@team_2.name)
+    expect(@team_1.nickname).to appear_before(@team_3.nickname)
+    expect(@team_3.nickname).to appear_before(@team_2.nickname)
   end
 end
