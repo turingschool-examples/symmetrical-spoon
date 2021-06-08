@@ -13,4 +13,4 @@
 <h2>Average Participant Age
   <%= @competition.player_age.to_f.round(2) %></h2>
 
-<%= link_to "Register a new team", "/teams/new" %>
+<%= link_to "Register a new team", "/competitions/#{@competition.id}/teams/new" %>

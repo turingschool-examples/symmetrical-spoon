@@ -66,6 +66,6 @@ describe 'competition show page' do
 
   it 'clicking that link travels to form for creating new team' do
     click_link('Register a new team')
-    expect(current_path).to eq "/teams/new"
+    expect(current_path).to eq "/competitions/#{@competition_1.id}/teams/new"
   end
 end
