@@ -44,7 +44,7 @@ RSpec.describe 'A competition Show Page' do
 
     it 'displays all teams and attributes' do
       visit("/competitions/#{@competition_1.id}")
-save_and_open_page
+
       expect(page).to have_content(@team_1.hometown)
       expect(page).to have_content(@team_1.nickname)
       expect(page).to have_content(@team_2.hometown)
@@ -53,6 +53,12 @@ save_and_open_page
       expect(page).to have_content(@team_3.nickname)
       expect(page).to_not have_content(@team_4.hometown)
       expect(page).to_not have_content(@team_4.nickname)
+    end
+
+    it 'displays average age of all players in competition' do
+      visit("/competitions/#{@competition_1.id}")
+
+      expect(page).to have_content("Average Age: #{@players_avg_age}")
     end
   end
 end
