@@ -6,7 +6,7 @@ class TeamCompetitionsController < ApplicationController
   def create
     competition = Competition.find(params[:id])
 
-    team = Team.create!(nickname: params[:nickname], hometown: params[:hometown])
+    team = Team.find_team_by_name_and_hometown(params[:nickname], params[:hometown])
 
     TeamCompetition.create!(team_id: team.id, competition_id: competition.id)
 

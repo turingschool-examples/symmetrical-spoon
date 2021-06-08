@@ -81,18 +81,18 @@ RSpec.describe 'Competition Show Page' do
   end
 
   it 'can register a new team' do
-    expect(page).to_not have_content('Toads')
-    expect(page).to_not have_content('Brighton')
+    expect(page).to_not have_content('Larrys')
+    expect(page).to_not have_content('Commerce City')
 
     click_on 'Register New Team'
 
-    fill_in :nickname, with: 'Toads'
-    fill_in :hometown, with: 'Brighton'
+    fill_in :nickname, with: 'Larrys'
+    fill_in :hometown, with: 'Commerce City'
 
     click_on 'Register'
 
     expect(current_path).to eq("/competitions/#{@comp_1.id}")
-    expect(page).to have_content('Toads')
-    expect(page).to have_content('Brighton')
+    expect(page).to have_content('Larrys')
+    expect(page).to have_content('Commerce City')
   end
 end
