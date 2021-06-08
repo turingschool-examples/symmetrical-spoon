@@ -11,7 +11,7 @@ RSpec.describe 'the competition show' do
     @player_2 = Player.create!(name: 'Steph Curry', age: 24)
     @player_3 = Player.create!(name: 'Joe Schmoe', age: 30)
     @player_4 = Player.create!(name: 'Pat Smith', age: 38)
-    @player_5 = Player.create!(name: 'Jamie Jones', age: 42)
+    @player_5 = Player.create!(name: 'Jamie Jones', age: 41)
     @player_6 = Player.create!(name: 'Jamie Jones', age: 20)
 
     TeamPlayer.create!(team: @team_1, player: @player_1)
@@ -41,6 +41,10 @@ RSpec.describe 'the competition show' do
     expect(page).to_not have_content(@team_3.nickname)
   end
 
+  it 'lists all the competition teams players average ages' do
+    expect(page).to have_content("Competition Players Average Age:")
+    expect(page).to have_content(29)
+  end
 end
 
   # it 'has a list of all studio movie actors with no duplicates, only currently working' do

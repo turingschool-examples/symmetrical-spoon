@@ -19,10 +19,13 @@ Competition.destroy_all
 @player_2 = Player.create!(name: 'Steph Curry', age: 24)
 @player_3 = Player.create!(name: 'Joe Schmoe', age: 30)
 @player_4 = Player.create!(name: 'Pat Smith', age: 38)
-@player_5 = Player.create!(name: 'Jamie Jones', age: 42)
+@player_5 = Player.create!(name: 'Jamie Jones', age: 41)
+
+@player_6 = Player.create!(name: 'Jamie Jones', age: 20)
 
 TeamPlayer.create!(team: @team_1, player: @player_1)
 TeamPlayer.create!(team: @team_1, player: @player_2)
 TeamPlayer.create!(team: @team_1, player: @player_3)
 TeamPlayer.create!(team: @team_2, player: @player_4)
 TeamPlayer.create!(team: @team_2, player: @player_5)
+TeamPlayer.create!(team: @team_3, player: @player_6)
