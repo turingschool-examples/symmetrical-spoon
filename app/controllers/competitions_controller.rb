@@ -3,9 +3,9 @@ class CompetitionsController < ApplicationController
     @competitions = Competition.all
   end
 
-  # def show
-  #   @competition = Competition.find(params[:id])
-  # end
+  def show
+    @competition = Competition.find(params[:id])
+  end
 
   # def new
   #   @shelter = Shelter.find(params[:shelter_id])

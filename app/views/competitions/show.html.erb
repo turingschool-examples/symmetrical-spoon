@@ -1,0 +1,9 @@
+<h2><%= @competition.name %></h2>
+<h3><%= @competition.location %></h3>
+<h3><%= @competition.sport %></h3>
+
+<h3>Teams</h3>
+<% @competition.teams.each do |team| %>
+    <%= team.name %><br>
+    <%= team.hometown %>
+<% end %>

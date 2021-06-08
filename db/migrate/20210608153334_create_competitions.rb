@@ -1,6 +1,6 @@
-class CreateCompetions < ActiveRecord::Migration[5.2]
+class CreateCompetitions < ActiveRecord::Migration[5.2]
   def change
-    create_table :competions do |t|
+    create_table :competitions do |t|
       t.string :name
       t.string :location
       t.string :sport
