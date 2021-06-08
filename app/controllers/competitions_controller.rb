@@ -7,5 +7,7 @@ class CompetitionsController < ApplicationController
     @competition = Competition.find(params[:id])
 
     @teams = @competition.teams
+
+    @average_age = @competition.average_age_of_all_players
   end
 end
